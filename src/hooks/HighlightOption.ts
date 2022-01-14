@@ -6,7 +6,7 @@ import {
   traverseAllNodesByIndex,
   TreeSelectNode,
   TreeselectProps
-} from "@/components/TreeSelect";
+} from "@/components/symbol";
 import { scrollIntoView } from "@/utils";
 import { last as getLast } from "lodash";
 

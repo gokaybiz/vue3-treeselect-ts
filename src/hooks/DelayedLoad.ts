@@ -7,7 +7,7 @@ import {
   TreeSelectNodeId,
   TreeselectProps,
   Trigger
-} from "@/components/Treeselect";
+} from "@/components/symbol";
 import { once } from "lodash";
 import isPromise from "is-promise";
 import {
@@ -335,7 +335,7 @@ export default function delayedLoad(
 
         const { id, label, children, isDefaultExpanded } = node;
         const isRootNode = parentNode === NO_PARENT_NODE;
-        const level = isRootNode ? 0 : parentNode.level + 1;
+        const level = isRootNode ? 0 : parentNode.level != undefined ? parentNode.level + 1 : 0;
         const isBranch = Array.isArray(children) || children === null;
         const isLeaf = !isBranch;
         const isDisabled = !!node.isDisabled || (!props.flat && !isRootNode && parentNode.isDisabled);
@@ -358,7 +358,7 @@ export default function delayedLoad(
         normalized.label = label;
         normalized.level = level;
         normalized.ancestors = isRootNode ? [] : parentNode?.ancestors && [parentNode].concat(parentNode?.ancestors);
-        normalized.index = (isRootNode ? [] : parentNode.index).concat(index);
+        normalized.index = (isRootNode ? [] : parentNode.index ? parentNode.index : []).concat(index);
         normalized.parentNode = parentNode;
         normalized.lowerCased = lowerCased;
         normalized.nestedSearchLabel = nestedSearchLabel;
@@ -560,7 +560,7 @@ export default function delayedLoad(
         if (node.isLeaf) {
           node.ancestors?.forEach((ancestor) => localSearch.countMap[ancestor.id][LEAF_DESCENDANTS]++);
         }
-        if (node.parentNode !== NO_PARENT_NODE) {
+        if (node.parentNode && node.parentNode !== NO_PARENT_NODE) {
           localSearch.countMap[node.parentNode.id][ALL_CHILDREN] += 1;
           // istanbul ignore else
           if (node.isLeaf) {
@@ -569,7 +569,11 @@ export default function delayedLoad(
         }
       }
 
-      if ((node.isMatched || (node.isBranch && node.isExpandedOnSearch)) && node.parentNode !== NO_PARENT_NODE) {
+      if (
+        (node.isMatched || (node.isBranch && node.isExpandedOnSearch)) &&
+        node.parentNode &&
+        node.parentNode !== NO_PARENT_NODE
+      ) {
         node.parentNode.isExpandedOnSearch = true;
         node.parentNode.hasMatchedDescendants = true;
       }

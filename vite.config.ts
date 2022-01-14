@@ -2,10 +2,22 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx({})],
+  plugins: [
+    vue(),
+    vueJsx({}),
+    dts({
+      exclude: ["node_modules"],
+      outputDir: "dist/types",
+      staticImport: false,
+      cleanVueFileName: false,
+      skipDiagnostics: false,
+      logDiagnostics: true
+    })
+  ],
   build: {
     // 静态文件目录
     assetsDir: "src/assets",
@@ -15,16 +27,18 @@ export default defineConfig({
     sourcemap: false,
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      formats: ["es"],
+      // formats: ["es"],
       name: "vue-treeselect",
       fileName: `treeselect`
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", "lodash"],
       output: {
         globals: {
-          vue: "Vue"
-        }
+          vue: "Vue",
+          lodash: "lodash"
+        },
+        exports: "named"
       }
     }
   },

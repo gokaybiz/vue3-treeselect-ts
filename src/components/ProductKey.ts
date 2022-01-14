@@ -1,5 +1,5 @@
 import { ComputedRef, inject, InjectionKey, Slot } from "vue";
-import { Forest, LocalSearch, Menu, RemoteSearchValue, TreeSelectNode, TreeselectProps, Trigger } from "./Treeselect";
+import { Forest, LocalSearch, Menu, RemoteSearchValue, TreeSelectNode, TreeselectProps, Trigger } from "./symbol";
 type InjectionType = {
   props: TreeselectProps;
   hasValue: ComputedRef<boolean>;
@@ -25,12 +25,7 @@ type InjectionType = {
   highlightNextOption: () => void;
   localSearch: LocalSearch;
   getControlDiv: () => HTMLElement;
-  getRemoteSearchEntry: () => {
-    isLoaded: boolean;
-    isLoading: boolean;
-    loadingError: string;
-    options: boolean | TreeSelectNode[];
-  };
+  getRemoteSearchEntry: () => RemoteSearchValue;
   handleRemoteSearch: () => void;
   forest: Forest;
   handleMouseDown: (evt: Event) => void;

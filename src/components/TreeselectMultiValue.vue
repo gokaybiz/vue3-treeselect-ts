@@ -5,7 +5,7 @@ import Input from "./TreeselectInput.vue";
 import Placeholder from "./TreeselectPlaceholder.vue";
 import { computed } from "vue";
 import { instance as instanceKey, injectStrict } from "@/components/ProductKey";
-import { TreeSelectNode } from "@/components/TreeSelect";
+import { TreeSelectNode } from "@/components/symbol";
 
 const instance = injectStrict(instanceKey);
 const count = computed(() => {

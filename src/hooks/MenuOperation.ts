@@ -1,4 +1,4 @@
-import { Menu, TreeselectProps } from "@/components/Treeselect";
+import { Menu, TreeselectProps } from "@/components/symbol";
 import { nextTick, Ref } from "vue";
 
 export default function menuOperation(

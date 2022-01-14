@@ -4,7 +4,7 @@ import {
   Forest,
   TreeSelectNodeId,
   traverseAllNodesByIndex
-} from "@/components/Treeselect";
+} from "@/components/symbol";
 import {
   ALL,
   ALL_WITH_INDETERMINATE,
@@ -20,15 +20,25 @@ import {
 import { createMap, warning } from "@/utils";
 import { computed } from "vue";
 function sortValueByLevel(a: TreeSelectNode, b: TreeSelectNode) {
-  return a.level === b.level ? sortValueByIndex(a, b) : a.level - b.level;
+  if (typeof a.level != "undefined" && typeof b.level != "undefined") {
+    return a.level === b.level ? sortValueByIndex(a, b) : a.level - b.level;
+  }
+  return -1;
 }
 
 function sortValueByIndex(a: TreeSelectNode, b: TreeSelectNode) {
   let i = 0;
   do {
-    if (a?.level < i) return -1;
-    if (b?.level < i) return 1;
-    if (a?.index[i] !== b?.index[i]) return a?.index[i] - b?.index[i];
+    if (!a.level || !b.level) return -1;
+    if (a?.level < i) {
+      return -1;
+    }
+    if (b?.level < i) {
+      return 1;
+    }
+    if (a.index != undefined && b.index != undefined && a.index[i] !== b.index[i]) {
+      return a?.index?.[i] - b?.index?.[i];
+    }
     i++;
     // eslint-disable-next-line no-constant-condition
   } while (true);

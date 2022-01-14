@@ -1,4 +1,4 @@
-import { TreeselectProps, Forest, LocalSearch, TreeSelectNode } from "@/components/Treeselect";
+import { TreeselectProps, Forest, LocalSearch, TreeSelectNode } from "@/components/symbol";
 import { NO_PARENT_NODE, UNCHECKED } from "@/constants";
 import { removeFromArray } from "@/utils";
 import { computed, ComputedRef, ref } from "vue";
@@ -96,9 +96,9 @@ export default function nodeValueOperation(
     }
 
     if (isFullyChecked) {
-      let curr: TreeSelectNode | null = node;
-      while ((curr = curr.parentNode) !== NO_PARENT_NODE) {
-        if (curr.children?.every(isSelected)) {
+      let curr: TreeSelectNode | null | undefined = node;
+      while ((curr = curr?.parentNode) !== NO_PARENT_NODE) {
+        if (curr?.children?.every(isSelected)) {
           addValue(curr);
         } else break;
       }
@@ -146,7 +146,7 @@ export default function nodeValueOperation(
       removeValue(node);
 
       let curr: TreeSelectNode | null = node;
-      while ((curr = curr.parentNode) !== NO_PARENT_NODE) {
+      while ((curr = curr.parentNode ? curr.parentNode : null) !== NO_PARENT_NODE) {
         if (isSelected(curr)) {
           removeValue(curr);
         } else break;

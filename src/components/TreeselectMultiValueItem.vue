@@ -2,7 +2,7 @@
 import { computed, PropType, toRefs } from "vue";
 import DeleteIcon from "./icons/Delete.vue";
 import { instance as instanceKey, injectStrict } from "@/components/ProductKey";
-import { TreeSelectNode } from "@/components/TreeSelect";
+import { TreeSelectNode } from "@/components/symbol";
 import DynamicSlot from "./DynamicSlot.vue";
 
 const props = defineProps({

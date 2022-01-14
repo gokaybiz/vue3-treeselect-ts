@@ -6,7 +6,7 @@ import { Transition, computed } from "vue";
 import DynamicSlot from "./DynamicSlot.vue";
 
 import { instance as instanceKey, injectStrict } from "@/components/ProductKey";
-import { TreeSelectNode } from "@/components/TreeSelect";
+import { TreeSelectNode } from "@/components/symbol";
 
 const props = defineProps<{
   node: TreeSelectNode;

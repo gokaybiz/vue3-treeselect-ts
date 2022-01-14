@@ -1,13 +1,13 @@
 {
   "name": "vue3-treeselect-ts",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "zhangtao-xmx",
+  "description": "基于vue3用ts重写的vue-treeselect。",
+  "main": "dist/treeselect.es.js",
+  "unpkg": "dist/treeselect.umd.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "vue": "^3.2.25"
+    "build": "vue-tsc --noEmit && vite build"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.16.7",
@@ -26,11 +26,34 @@
     "fuzzysearch": "^1.0.3",
     "is-promise": "^4.0.0",
     "less": "^4.1.2",
+    "lodash": "^4.17.21",
     "material-colors": "^1.2.6",
     "prettier": "^2.5.1",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
+    "vite-plugin-dts": "^0.9.9",
     "vue-tsc": "^0.29.8",
     "watch-size": "^2.0.0"
-  }
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0",
+    "lodash": "^4.17.21"
+  },
+  "bugs": {
+    "url": "https://gitee.com/zhangtaoaizsn/vue3-treeselect-ts/issues"
+  },
+  "homepage": "https://gitee.com/zhangtaoaizsn/vue3-treeselect-ts",
+  "repository": {
+    "type": "gitee",
+    "url": "https://gitee.com/zhangtaoaizsn/vue3-treeselect-ts.git"
+  },
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "keywords": [
+    "vue-treeselect",
+    "vue3-treeselect"
+  ],
+  "typings": "dist/types/src/index.d.ts"
 }

@@ -1,6 +1,6 @@
 import { createMap } from "@/utils";
 import { constant, identity } from "lodash";
-import { ExtractPropTypes, PropType, reactive, ref } from "vue";
+import { ExtractPropTypes, PropType, ref } from "vue";
 import {
   ALL,
   ALL_CHILDREN,
@@ -23,12 +23,12 @@ export interface TreeSelectNode {
   /**
    * 是否禁用
    */
-  isDisabled: boolean;
+  isDisabled?: boolean;
 
   /**
    * 是否新建节点	用于为新节点赋予不同的颜色。
    */
-  isNew: boolean;
+  isNew?: boolean;
   /**
    *	默认情况下是否应扩展此文件夹选项
    */
@@ -36,22 +36,22 @@ export interface TreeSelectNode {
   /**
    * 是否根节点
    */
-  isRootNode: boolean;
+  isRootNode?: boolean;
   /**
    * 是否左节点
    */
-  isLeaf: boolean;
+  isLeaf?: boolean;
   /**
    * 父节点
    */
-  parentNode: TreeSelectNode | null;
-  isFallbackNode: boolean;
-  isBranch: boolean;
-  index: number[];
+  parentNode?: TreeSelectNode | null;
+  isFallbackNode?: boolean;
+  isBranch?: boolean;
+  index?: number[];
   /**
    * 层级
    */
-  level: number;
+  level?: number;
   /**
    * 节点数据
    */
@@ -432,7 +432,7 @@ export const props = {
    * @type {function(node, instanceId): node}
    */
   normalizer: {
-    type: Function as PropType<(node: TreeSelectNode, instanceId: string) => TreeSelectNode>,
+    type: Function as PropType<(node: unknown, instanceId: string) => TreeSelectNode>,
     default: identity
   },
 
@@ -678,7 +678,7 @@ export const asyncOptionsStates = {
   isLoading: false,
   loadingError: ""
 };
-export type RemoteSearchValue = typeof asyncOptionsStates & { options: boolean | TreeSelectNode[] };
+export type RemoteSearchValue = typeof asyncOptionsStates & { options?: boolean | TreeSelectNode[] };
 
 export class Menu {
   /**

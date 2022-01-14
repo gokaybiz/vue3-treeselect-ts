@@ -1,4 +1,4 @@
-import { TreeselectProps } from "@/components/Treeselect";
+import { TreeselectProps } from "@/components/symbol";
 import { warning } from "@/utils";
 import { get } from "lodash";
 /**
