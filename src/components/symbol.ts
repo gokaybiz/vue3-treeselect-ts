@@ -432,7 +432,8 @@ export const props = {
    * @type {function(node, instanceId): node}
    */
   normalizer: {
-    type: Function as PropType<(node: unknown, instanceId: string) => TreeSelectNode>,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    type: Function as PropType<(node: any, instanceId: string) => TreeSelectNode>,
     default: identity
   },
 
