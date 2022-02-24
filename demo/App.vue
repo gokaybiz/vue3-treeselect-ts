@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Treeselect from "../dist/treeselect.es";
+//import Treeselect from "../src/components/Treeselect.vue";
 import { generateOptions } from "./utils";
 import { data as countriesData } from "./countries-of-the-world";
 const simulateAsyncOperation = (fn) => {
@@ -322,8 +323,6 @@ export default defineComponent({
             id: `${searchQuery}-${i}`,
             label: `${searchQuery}-${i}`
           }));
-          console.log(333);
-
           callback(null, options);
         });
       }

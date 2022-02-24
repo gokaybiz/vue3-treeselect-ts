@@ -1,6 +1,6 @@
 {
   "name": "vue3-treeselect-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "zhangtao-xmx",
   "description": "基于vue3用ts重写的vue-treeselect。",
   "main": "dist/treeselect.es.js",

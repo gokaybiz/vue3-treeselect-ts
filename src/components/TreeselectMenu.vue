@@ -15,7 +15,8 @@ const directionMap = {
   below: "bottom"
 };
 const menuContainerStyle = computed(() => {
-  return instance.props.appendToBody ? ({ zIndex: instance.props.zIndex } as CSSProperties) : "";
+  console.log(instance.props.appendToBody + "111");
+  return instance.props.appendToBody ? "" : ({ zIndex: instance.props.zIndex } as CSSProperties);
 });
 const beforeListRenderer = computed(() => {
   return instance.beforeListRenderer;

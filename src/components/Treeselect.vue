@@ -183,11 +183,11 @@ const handleMouseDown = (evt: Event) => {
 const appendToBodyMenuStyle = computed(() => {
   if (props.appendToBody) {
     const controlRect = getControlDiv()?.getBoundingClientRect();
-    const offsetY = menu.placement === "bottom" ? controlRect.height : 0;
+    const offsetY = menu.placement === "bottom" ? controlRect?.height : 0;
     return {
-      left: Math.round(controlRect.left) + "px",
-      top: Math.round(controlRect.top + offsetY) + "px",
-      width: controlRect.width + "px"
+      left: Math.round(controlRect?.left) + "px",
+      top: Math.round(controlRect?.top + offsetY) + "px",
+      width: controlRect?.width + "px"
     };
   }
   return "";
