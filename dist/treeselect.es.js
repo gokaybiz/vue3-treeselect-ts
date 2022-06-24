@@ -837,7 +837,6 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
       instance$1.setCurrentHighlightedOption(props2.node, false);
     };
     const handleMouseDownOnArrow = () => {
-      console.log("handleMouseDownOnArrow");
       instance$1.toggleExpanded(props2.node);
     };
     const handleMouseDownOnLabelContainer = () => {
@@ -1026,7 +1025,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       below: "bottom"
     };
     const menuContainerStyle = computed(() => {
-      console.log(instance$1.props.appendToBody + "111");
       return instance$1.props.appendToBody ? "" : { zIndex: instance$1.props.zIndex };
     });
     const beforeListRenderer = computed(() => {
@@ -1073,7 +1071,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       const spaceAbove = controlRect.top;
       const spaceBelow = window.innerHeight - controlRect.bottom;
       const isControlInViewport = controlRect.top >= 0 && controlRect.top <= viewportHeight || controlRect.top < 0 && controlRect.bottom > 0;
-      console.log(`menuHeight\u5F85\u9A8C\u8BC1\u5982\u679C\u4E0D\u5B58\u5728\u7F6E\u4E3A0\u662F\u5426\u6B63\u5E38`);
       const hasEnoughSpaceBelow = spaceBelow > (menuHeight || 0) + MENU_BUFFER;
       const hasEnoughSpaceAbove = spaceAbove > (menuHeight || 0) + MENU_BUFFER;
       if (!isControlInViewport) {
