@@ -233,7 +233,7 @@ watch(
 </script>
 
 <template>
-  <div class="vue-treeselect__input-container" v-bind="getProps()">
+  <div class="vue-treeselect__input-container" v-bind="getProps">
     <template v-if="instance.props.searchable && !instance.props.disabled">
       <input
         ref="input"
