@@ -97,7 +97,7 @@ declare const _sfc_main: import("vue").DefineComponent<{}, {
             };
         } | Event) => void;
         onKeyDown: (evt: KeyboardEvent) => void;
-        getProps: () => void;
+        getProps: () => {};
         needAutoSize: import("vue").ComputedRef<boolean>;
         onMouseDown: (evt: MouseEvent) => void;
         sizer: import("vue").Ref<HTMLDivElement | undefined>;

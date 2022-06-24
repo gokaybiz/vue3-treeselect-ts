@@ -372,6 +372,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
           };
         }
       }
+      return props2;
     };
     const needAutoSize = computed(() => {
       return instance$1.props.searchable && !instance$1.props.disabled && instance$1.props.multiple;
@@ -400,7 +401,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
       flush: "post"
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", mergeProps({ class: "vue-treeselect__input-container" }, getProps), [
+      return openBlock(), createElementBlock("div", mergeProps({ class: "vue-treeselect__input-container" }, getProps()), [
         unref(instance$1).props.searchable && !unref(instance$1).props.disabled ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           createElementVNode("input", {
             ref_key: "input",
@@ -463,37 +464,35 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
       return instance$1.internalValue.value.slice(0, instance$1.props.limit).map(instance$1.getNode).filter((node) => node != null);
     });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock(Fragment, null, [
-        createVNode(ValueContainer, null, {
-          default: withCtx(() => [
-            createVNode(TransitionGroup, {
-              class: "vue-treeselect__multi-value",
-              tag: "div",
-              name: "vue-treeselect__multi-value-item--transition",
-              appear: true
-            }, {
-              default: withCtx(() => [
-                (openBlock(true), createElementBlock(Fragment, null, renderList(unref(nodes), (node) => {
-                  return openBlock(), createBlock(_sfc_main$a, {
-                    key: `multi-value-item-${node.id}`,
-                    node
-                  }, null, 8, ["node"]);
-                }), 128))
-              ]),
-              _: 1
-            })
-          ]),
-          _: 1
-        }),
-        unref(count) > 0 ? (openBlock(), createElementBlock("div", _hoisted_1$5, [
-          createElementVNode("span", _hoisted_2$3, toDisplayString(unref(instance$1).props.limitText(unref(count))), 1)
-        ])) : createCommentVNode("", true),
-        createVNode(_sfc_main$7, { key: "placeholder" }),
-        createVNode(_sfc_main$8, {
-          ref: "input",
-          key: "input"
-        }, null, 512)
-      ], 64);
+      return openBlock(), createBlock(ValueContainer, null, {
+        default: withCtx(() => [
+          createVNode(TransitionGroup, {
+            class: "vue-treeselect__multi-value",
+            tag: "div",
+            name: "vue-treeselect__multi-value-item--transition",
+            appear: true
+          }, {
+            default: withCtx(() => [
+              (openBlock(true), createElementBlock(Fragment, null, renderList(unref(nodes), (node) => {
+                return openBlock(), createBlock(_sfc_main$a, {
+                  key: `multi-value-item-${node.id}`,
+                  node
+                }, null, 8, ["node"]);
+              }), 128)),
+              unref(count) > 0 ? (openBlock(), createElementBlock("div", _hoisted_1$5, [
+                createElementVNode("span", _hoisted_2$3, toDisplayString(unref(instance$1).props.limitText(unref(count))), 1)
+              ])) : createCommentVNode("", true),
+              createVNode(_sfc_main$7, { key: "placeholder" }),
+              createVNode(_sfc_main$8, {
+                ref: "input",
+                key: "input"
+              }, null, 512)
+            ]),
+            _: 1
+          })
+        ]),
+        _: 1
+      });
     };
   }
 });

@@ -28,11 +28,14 @@ const nodes = computed(() => {
       name="vue-treeselect__multi-value-item--transition"
       :appear="true">
       <MultiValueItem v-for="node in nodes" :key="`multi-value-item-${node.id}`" :node="node" />
+      <div
+        v-if="count > 0"
+        key="exceed-limit-tip"
+        class="vue-treeselect__limit-tip vue-treeselect-helper-zoom-effect-off">
+        <span class="vue-treeselect__limit-tip-text">{{ instance.props.limitText(count) }}</span>
+      </div>
+      <Placeholder key="placeholder" />
+      <Input ref="input" key="input" />
     </transition-group>
   </ValueContainer>
-  <div v-if="count > 0" key="exceed-limit-tip" class="vue-treeselect__limit-tip vue-treeselect-helper-zoom-effect-off">
-    <span class="vue-treeselect__limit-tip-text">{{ instance.props.limitText(count) }}</span>
-  </div>
-  <Placeholder key="placeholder" />
-  <Input ref="input" key="input" />
 </template>
