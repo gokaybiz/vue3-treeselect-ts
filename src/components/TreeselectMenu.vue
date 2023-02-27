@@ -15,7 +15,6 @@ const directionMap = {
   below: "bottom"
 };
 const menuContainerStyle = computed(() => {
-  console.log(instance.props.appendToBody + "111");
   return instance.props.appendToBody ? "" : ({ zIndex: instance.props.zIndex } as CSSProperties);
 });
 const beforeListRenderer = computed(() => {
@@ -66,7 +65,6 @@ const adjustMenuOpenDirection = () => {
   const isControlInViewport =
     (controlRect.top >= 0 && controlRect.top <= viewportHeight) || (controlRect.top < 0 && controlRect.bottom > 0);
   // TODO:待验证如果不存在置为0是否正常
-  console.log(`menuHeight待验证如果不存在置为0是否正常`);
   const hasEnoughSpaceBelow = spaceBelow > (menuHeight || 0) + MENU_BUFFER;
   const hasEnoughSpaceAbove = spaceAbove > (menuHeight || 0) + MENU_BUFFER;
 

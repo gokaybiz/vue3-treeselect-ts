@@ -1,0 +1,47 @@
+declare const _sfc_main: import("vue").DefineComponent<{}, {
+    instance: {
+        props: import("./symbol").TreeselectProps;
+        hasValue: import("vue").ComputedRef<boolean>;
+        internalValue: import("vue").ComputedRef<(string | number)[]>;
+        menu: import("./symbol").Menu;
+        trigger: import("./symbol").Trigger;
+        getNode: (nodeId: string | number | null) => import("./symbol").TreeSelectNode | null;
+        clear: () => void;
+        focusInput: () => void;
+        toggleMenu: () => void;
+        openMenu: () => void;
+        getMenuDiv: () => HTMLElement | null;
+        closeMenu: () => void;
+        removeLastValue: () => void;
+        select: (node: import("./symbol").TreeSelectNode) => void;
+        highlightLastOption: () => void;
+        highlightFirstOption: () => void;
+        shouldExpand: (node: import("./symbol").TreeSelectNode) => any;
+        setCurrentHighlightedOption: (node: import("./symbol").TreeSelectNode, scroll?: boolean | undefined) => void;
+        loadChildrenOptions: (parentNode: import("./symbol").TreeSelectNode) => void;
+        toggleExpanded: (node: import("./symbol").TreeSelectNode) => void;
+        highlightPrevOption: () => void;
+        highlightNextOption: () => void;
+        localSearch: import("./symbol").LocalSearch;
+        getControlDiv: () => HTMLElement;
+        getRemoteSearchEntry: () => import("./symbol").RemoteSearchValue;
+        handleRemoteSearch: () => void;
+        forest: import("./symbol").Forest;
+        handleMouseDown: (evt: Event) => void;
+        beforeListRenderer: import("vue").Slot | undefined;
+        afterListRenderer: import("vue").Slot | undefined;
+        customValueLabelRenderer: import("vue").Slot | undefined;
+        customLabelRenderer: import("vue").Slot | undefined;
+        isSelected: (node?: import("./symbol").TreeSelectNode | null | undefined) => boolean | null | undefined;
+        shouldShowOptionInMenu: (node: import("./symbol").TreeSelectNode) => boolean;
+        selectedNodes: import("vue").ComputedRef<import("./symbol").TreeSelectNode[]>;
+        rootOptionsStates: import("./symbol").RemoteSearchValue;
+        loadRootOptions: () => void;
+    };
+    placeholderClass: import("vue").ComputedRef<{
+        "vue-treeselect__placeholder": boolean;
+        "vue-treeselect-helper-zoom-effect-off": boolean;
+        "vue-treeselect-helper-hide": string | true;
+    }>;
+}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, import("vue").EmitsOptions, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{}>>, {}>;
+export default _sfc_main;

@@ -41,7 +41,6 @@ const handleMouseEnterOption = () => {
 };
 
 const handleMouseDownOnArrow = () => {
-  console.log("handleMouseDownOnArrow");
   instance.toggleExpanded(props.node);
 };
 

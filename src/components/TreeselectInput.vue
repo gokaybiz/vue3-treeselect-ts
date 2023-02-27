@@ -196,6 +196,7 @@ const getProps = () => {
       };
     }
   }
+  return props;
 };
 
 const needAutoSize = computed(() => {
