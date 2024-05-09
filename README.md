@@ -1,32 +1,34 @@
 # vue3-treeselect-ts
 
-#### 介绍
-基于vue3用ts重写的vue-treeselect。
 
-#### 安装教程
+#### (- Forked from: [gitee - (zhangtaoaizsn/vue3-treeselect-ts)](https://gitee.com/zhangtaoaizsn/vue3-treeselect-ts) -)
 
+#### Description
+vue-treeselect rewritten with ts based on vue 3.
+
+#### How to install
 ```bash
  npm install --save vue3-treeselect-ts
  ```
 
-#### 使用说明
+#### How to use
 ```html
 <!-- Vue SFC -->
 <template>
   <div id="app">
-    <treeselect v-model="value" :multiple="true" :options="options" />
+    <TreeSelect v-model="value" :multiple="true" :options="options" />
   </div>
 </template>
 
 <script>
   // import the component
-  import Treeselect from 'vue3-treeselect-ts'
+  import TreeSelect from 'vue3-treeselect-ts'
   // import the styles
   import 'vue3-treeselect-ts/dist/style.css'
 
   export default {
     // register the component
-    components: { Treeselect },
+    components: { TreeSelect },
     data() {
       return {
         // define the default value
@@ -55,16 +57,12 @@
 </script>
 ```
 
-更多使用方式可以参考[vue-treeselect](https://vue-treeselect.js.org/)主页或者[vue-treeselect中文](https://www.vue-treeselect.cn/)主页
+Documentation: [vue-treeselect](https://vue-treeselect.js.org/)
 
-#### 发现Bugs
-你可以新建一个[issue](https://gitee.com/zhangtaoaizsn/vue3-treeselect-ts/issues/new)
+#### For reporting bugs
+Create an [issue](https://github.com/gokaybiz/vue3-treeselect-ts/issues/new)
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-还在维护的。。。
+#### Contribution
+1.  Fork the repository
+2.  Create a branch like Feat_xxx or Fix_xxx
+3.  Make a Pull Request
