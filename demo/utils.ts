@@ -1,4 +1,4 @@
-import { encodeHTML } from "entities";
+import { encodeHTML } from "entities/lib/encode";
 
 export const code = (str) => `<code>${encodeHTML(str)}</code>`;
 
