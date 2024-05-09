@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import Treeselect from "../dist/treeselect.es";
+import TreeSelect from "../dist/treeselect.mjs";
 //import Treeselect from "../src/components/Treeselect.vue";
 import { generateOptions } from "./utils";
 import { data as countriesData } from "./countries-of-the-world";
@@ -13,7 +13,7 @@ let called = false;
 const options1 = generateOptions(3, 5);
 const options5 = generateOptions(3);
 export default defineComponent({
-  components: { Treeselect },
+  components: { TreeSelect },
   data: () => ({
     multiple: true,
     clearable: false,
