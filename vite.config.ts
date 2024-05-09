@@ -11,11 +11,9 @@ export default defineConfig({
     vueJsx({}),
     dts({
       exclude: ["node_modules"],
-      outputDir: "dist/types",
+      outDir: "dist/types",
       staticImport: false,
       cleanVueFileName: false,
-      skipDiagnostics: false,
-      logDiagnostics: true
     })
   ],
   build: {
