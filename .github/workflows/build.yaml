@@ -28,10 +28,11 @@ jobs:
           cp package.json temp/
           cp -r dist temp/
 
-      - name: Compressing build assets
+      - name: Compress Build Files
         run: |
           cd temp
           zip -r ../build.zip .
+          tar -czf ../build.tar.gz .
 
       - name: Create Release
         id: create_release
@@ -44,8 +45,8 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Assets
-        id: upload-release-assets
+      - name: Upload Release Assets (zip)
+        id: upload-release-assets-zip
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,3 +55,14 @@ jobs:
           asset_path: build.zip
           asset_name: ${{ github.event.repository.name }}-${{ github.run_number }}.zip
           asset_content_type: application/zip
+
+      - name: Upload Release Assets (tar.gz)
+        id: upload-release-assets-tar-gzip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build.tar.gz
+          asset_name: ${{ github.event.repository.name }}-${{ github.run_number }}.tar.gz
+          asset_content_type: application/gzip
