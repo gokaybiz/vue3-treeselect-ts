@@ -1,4 +1,4 @@
-<script lang="tsx">
+<script lang="ts">
 import { defineComponent, PropType, Slot } from "vue";
 export default defineComponent({
   props: {

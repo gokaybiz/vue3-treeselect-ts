@@ -17,8 +17,9 @@ import {
   NO_PARENT_NODE,
   UNCHECKED
 } from "@/constants";
-import { createMap, warning } from "@/utils";
-import { computed } from "vue";
+import {createMap, warning} from "@/utils";
+import {computed} from "vue";
+
 function sortValueByLevel(a: TreeSelectNode, b: TreeSelectNode) {
   if (typeof a.level != "undefined" && typeof b.level != "undefined") {
     return a.level === b.level ? sortValueByIndex(a, b) : a.level - b.level;
@@ -153,7 +154,7 @@ export default function NodeOperation(props: TreeselectProps, forest: Forest) {
     return (forest.nodeMap[id] = fallbackNode);
   };
   const extractNodeFromValue = (id: TreeSelectNode["id"]) => {
-    const defaultNode = { id };
+    const defaultNode = {id};
 
     if (props.valueFormat === "id") {
       return defaultNode;
@@ -164,8 +165,8 @@ export default function NodeOperation(props: TreeselectProps, forest: Forest) {
         ? props.modelValue
         : []
       : props.modelValue
-      ? [props.modelValue]
-      : [];
+        ? [props.modelValue]
+        : [];
     const matched = valueArray.find((value) => {
       return enhancedNormalizer(value).id === id;
     });
@@ -176,9 +177,9 @@ export default function NodeOperation(props: TreeselectProps, forest: Forest) {
     const normalizer = props.normalizer?.(node, props.instanceId.toString());
     return normalizer
       ? {
-          ...node,
-          ...normalizer
-        }
+        ...node,
+        ...normalizer
+      }
       : node;
   };
 
@@ -235,12 +236,21 @@ export default function NodeOperation(props: TreeselectProps, forest: Forest) {
   };
   const traverseDescendantsDFS = (parentNode: TreeSelectNode, callback: (node: TreeSelectNode) => void) => {
     if (!parentNode.isBranch) return;
-    parentNode?.children?.forEach((child) => {
-      // deep-level node first
-      traverseDescendantsDFS(child, callback);
-      callback(child);
-    });
+
+      if (Array.isArray(parentNode?.children)) {
+        const stack = [...parentNode.children];
+        while (stack.length > 0) {
+          const node = stack.pop();
+          if (node?.isBranch && Array.isArray(node?.children)) {
+            stack.push(...node.children);
+          }
+          if (node) {
+            callback(node);
+          }
+        }
+      }
   };
+
   return {
     getNode,
     enhancedNormalizer,

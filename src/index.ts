@@ -1,7 +1,7 @@
-import Treeselect from "./components/Treeselect.vue";
+import TreeSelect from "./components/Treeselect.vue";
 import "./style/style.less";
 
-export default Treeselect;
+export default TreeSelect;
 export {
   // Delayed loading.
   LOAD_ROOT_OPTIONS,

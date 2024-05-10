@@ -5,22 +5,20 @@
   "description": "基于vue3用ts重写的vue-treeselect。",
   "main": "dist/treeselect.es.js",
   "unpkg": "dist/treeselect.umd.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "parcel ./demo/index.html",
-    "build": "vue-tsc --noEmit && vite build"
+    "build": "vue-tsc --noEmit && vite build --emptyOutDir"
   },
   "devDependencies": {
     "@babel/core": "^7.12.0",
     "@babel/preset-typescript": "^7.24.1",
-    "@parcel/transformer-vue": "^2.12.0",
+    "@types/entities": "^2.0.0",
     "@types/lodash": "^4.17.1",
     "@types/node": "^20.12.11",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "@vue/babel-plugin-jsx": "^1.2.2",
     "easings-css": "^2.1.1",
     "eslint": "^9.2.0",
     "eslint-config-prettier": "^9.1.0",
@@ -57,7 +55,6 @@
   "typings": "dist/types/src/index.d.ts",
   "dependencies": {
     "entities": "^4.5.0",
-    "parcel": "^2.12.0",
     "vue": "^3.4.27"
   }
 }

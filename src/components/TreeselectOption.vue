@@ -134,7 +134,7 @@ const customLabelRenderer = computed(() => {
           }" />
         <label v-else class="vue-treeselect__label">
           {{ node.label }}
-          <span v-if="shouldShowCount" class="vue-treeselect__count">{{ count }}</span>
+          <span v-if="shouldShowCount" class="vue-treeselect__count">({{ count }})</span>
         </label>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import TreeSelect from "../dist/treeselect.mjs";
+import TreeSelect from "../src/index";
 //import Treeselect from "../src/components/Treeselect.vue";
 import { generateOptions } from "./utils";
 import { data as countriesData } from "./countries-of-the-world";
@@ -331,9 +331,9 @@ export default defineComponent({
 });
 </script>
 <template>
-  <treeselect v-model="value1" :multiple="true" :options="options1" placeholder="Select your favourite(s)..." />
+  <TreeSelect v-model="value1" :multiple="true" :options="options1" placeholder="Select your favourite(s)..." />
   value1:{{ value1 }}
-  <treeselect
+  <TreeSelect
     v-model="value2"
     name="demo"
     :multiple="multiple"
@@ -369,23 +369,23 @@ export default defineComponent({
     <label><input v-model="appendToBody" type="checkbox" />Append to body</label>
   </p>
   <!--  延时加载
-  <treeselect
+  <TreeSelect
     v-model="value3"
     :multiple="true"
     :options="options3"
     :load-options="loadOptions"
     placeholder="Try expanding any folder option..." /> -->
-  <treeselect
+  <TreeSelect
     :load-options="loadOptions2"
     :options="options4"
     :auto-load-root-options="false"
     :multiple="true"
     placeholder="Open the menu..." />
   <!-- 异步搜索
-  <treeselect :multiple="true" :async="true" :load-options="loadOptions3" /> -->
-  平面模式和排序值
+  <TreeSelect :multiple="true" :async="true" :load-options="loadOptions3" /> -->
+  Flat mode & sort items
   <div>
-    <treeselect
+    <TreeSelect
       v-model="value5"
       :multiple="true"
       :options="options5"
@@ -404,7 +404,7 @@ export default defineComponent({
   </div>
   防止价值组合
   <div>
-    <treeselect v-model="value6" :multiple="true" :options="options6" :value-consists-of="valueConsistsOf" />
+    <TreeSelect v-model="value6" :multiple="true" :options="options6" :value-consists-of="valueConsistsOf" />
     value6:{{ value6 }}
     <p><strong>Value consists of:</strong></p>
     <p class="options">
@@ -417,32 +417,29 @@ export default defineComponent({
     </p>
   </div>
 
-  禁用分支节点
-  <treeselect :options="options7" :disable-branch-nodes="true" :show-count="true" placeholder="Where are you from?" />
-  拼合搜索结果
-  <treeselect :options="options8" :multiple="true" :flatten-search-results="true" placeholder="Where are you from?" />
-  禁用项目选择
-  <treeselect v-model="value9" :multiple="true" :options="options9" />
-  巢状搜寻
-  <treeselect v-model="value10" :multiple="true" :options="options10" :disable-branch-nodes="true" search-nested />
-  自定义键名
-  <treeselect v-model="value11" :options="options11" :normalizer="normalizer" />
-  自定义选项标签
-  <treeselect v-model="value12" :options="options12" :searchable="false" :show-count="true" :default-expand-level="1">
+  Disable branch nodes
+  <TreeSelect :options="options7" :disable-branch-nodes="true" :show-count="true" placeholder="Where are you from?" />
+  Flatten search results
+  <TreeSelect :options="options8" :multiple="true" :flatten-search-results="true" placeholder="Where are you from?" />
+  Disable item selection
+  <TreeSelect v-model="value9" :multiple="true" :options="options9" />
+  Nested search
+  <TreeSelect v-model="value10" :multiple="true" :options="options10" :disable-branch-nodes="true" search-nested />
+  Normalize by key names
+  <TreeSelect v-model="value11" :options="options11" :normalizer="normalizer" />
+  Customizing option labels
+  <TreeSelect v-model="value12" :options="options12" :searchable="false" :show-count="true" :default-expand-level="1">
     <template #option-label="{ node, shouldShowCount, count, labelClassName, countClassName }">
       <label :class="labelClassName">
-        {{ node.isBranch ? "Branch" : "Leaf" }}: {{ node.label }}
+        {{ node.isBranch ? "Branch" : "Leaf" }}: {{ node.label }} <<
         <span v-if="shouldShowCount" :class="countClassName">({{ count }})</span>
       </label>
     </template>
   </treeselect>
-  自定义值标签
-  <treeselect v-model="value13" :options="options13" :multiple="true">
+  Customizing value labels
+  <TreeSelect v-model="value13" :options="options13" :multiple="true">
     <template #value-label="{ node }">
-      <div>{{ node.raw.customLabel }}</div>
+      <div>{{ node.raw.customLabel }}!</div>
     </template>
   </treeselect>
 </template>
-<style>
-@import "../dist/style.css";
-</style>

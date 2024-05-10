@@ -1,31 +1,31 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
 import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
+
+const outDir = path.resolve(__dirname, "dist");
 export default defineConfig({
   plugins: [
     vue(),
-    vueJsx({}),
     dts({
       exclude: ["node_modules"],
-      outDir: "dist/types",
+      outDir: path.resolve(outDir, "types"),
       staticImport: false,
       cleanVueFileName: false,
     })
   ],
+  root: './demo',
   build: {
-    // 静态文件目录
-    assetsDir: "src/assets",
-    // 生成文件目录
-    outDir: "dist",
-    // 构建后是否生成 source map 文件。
+    // assets path
+    assetsDir: path.resolve(__dirname, "src", "assets"),
+    // output path
+    outDir: outDir,
+    // sourcemap settings。
     sourcemap: false,
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      // formats: ["es"],
+      entry: path.resolve(__dirname, "src", "index.ts"),
       name: "vue-treeselect",
       fileName: `treeselect`
     },
