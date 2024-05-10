@@ -11,14 +11,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Install Dependencies
-        run: npm install  # or yarn install, depending on your package manager
+        run: pnpm install
 
       - name: Build
-        run: npm run build  # or whatever command you use to build your project
+        run: pnpm run build
 
-      - name: Copy package.json to dist
-        run: cp package.json dist/
+      - name: Copy package.json and dist to temporary location
+        run: |
+          mkdir temp
+          cp package.json temp/
+          cp -r dist temp/
 
       - name: Create Release
         id: create_release
@@ -38,6 +44,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/  # adjust this path based on your project structure
-          asset_name: your_build-${{ github.run_number }}.zip
+          asset_path: temp/
+          asset_name: ${{ github.event.repository.name }}-${{ github.run_number }}.zip
           asset_content_type: application/zip
